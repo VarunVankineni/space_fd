@@ -1,0 +1,124 @@
+LAPLACE
+
+Sat 1
+State vector:
+
+ r (km) = [-7308.8 661.936 -208.06]
+ v (km/s) = [-0.0264645 1.27697 8.33134] 
+
+ Angular momentum (kmˆ2/s) = 61876.6
+ Eccentricity = 0.308692
+ Right ascension (deg) = 174.578
+ Inclination (deg) = 98.6589
+ Argument of perigee (deg) = 1.08482
+ True anomaly (deg) = 357.272
+ Semimajor axis (km): = 10617.1
+ Period:
+ Seconds = 10887.3
+ Minutes = 181.455
+ Hours = 3.02425
+ Days = 0.126011
+-----------------------------------------------
+
+Sat 2
+State vector:
+
+ r (km) = [-7306.88 -59.7499 -66.3164]
+ v (km/s) = [-0.0385905 1.13116 8.02349] 
+
+ Angular momentum (kmˆ2/s) = 59210.7
+ Eccentricity = 0.203748
+ Right ascension (deg) = 180.395
+ Inclination (deg) = 98.0264
+ Argument of perigee (deg) = 1.2913
+ True anomaly (deg) = 358.184
+ Semimajor axis (km): = 9176.5
+ Period:
+ Seconds = 8748.37
+ Minutes = 145.806
+ Hours = 2.4301
+ Days = 0.101254
+-----------------------------------------------
+
+Sat 3
+State vector:
+
+ r (km) = [-2533.69 -6553.59 1757.78]
+ v (km/s) = [6.91343 -2.19364 1.85076] 
+
+ Angular momentum (kmˆ2/s) = 54216.4
+ Eccentricity = 0.0182777
+ Right ascension (deg) = 206.162
+ Inclination (deg) = 20.2485
+ Argument of perigee (deg) = 37.8633
+ True anomaly (deg) = 6.66281
+ Semimajor axis (km): = 7376.81
+ Period:
+ Seconds = 6305.42
+ Minutes = 105.09
+ Hours = 1.75151
+ Days = 0.0729794
+-----------------------------------------------
+
+
+Sat 4
+ State vector:
+
+ r (km) = [-3189.59 -6189.04 743.305]
+ v (km/s) = [6.74232 -3.47518 0.0606004] 
+
+ Angular momentum (kmˆ2/s) = 53114.6
+ Eccentricity = 0.0108252
+ Right ascension (deg) = 157.012
+ Inclination (deg) = 6.11053
+ Argument of perigee (deg) = 80.9262
+ True anomaly (deg) = 4.82118
+ Semimajor axis (km): = 7078.52
+ Period:
+ Seconds = 5926.86
+ Minutes = 98.781
+ Hours = 1.64635
+ Days = 0.0685979
+-----------------------------------------------
+
+Sat 5
+ State vector:
+
+ r (km) = [-6691.33 282.255 2754.4]
+ v (km/s) = [2.8572 1.08515 7.08618] 
+
+ Angular momentum (kmˆ2/s) = 55880.1
+ Eccentricity = 0.0829284
+ Right ascension (deg) = 181.025
+ Inclination (deg) = 98.301
+ Argument of perigee (deg) = 13.1198
+ True anomaly (deg) = 9.48591
+ Semimajor axis (km): = 7888.14
+ Period:
+ Seconds = 6972.25
+ Minutes = 116.204
+ Hours = 1.93674
+ Days = 0.0806973
+-----------------------------------------------
+
+
+
+Sat 6
+ State vector:
+
+ r (km) = [-2927.63 6250.2 440.457]
+ v (km/s) = [0.997253 0.0361769 7.69056] 
+
+ Angular momentum (kmˆ2/s) = 53628.7
+ Eccentricity = 0.0453519
+ Right ascension (deg) = 115.534
+ Inclination (deg) = 96.7883
+ Argument of perigee (deg) = 346.361
+ True anomaly (deg) = 17.3164
+ Semimajor axis (km): = 7230.23
+ Period:
+ Seconds = 6118.42
+ Minutes = 101.974
+ Hours = 1.69956
+ Days = 0.070815
+-----------------------------------------------

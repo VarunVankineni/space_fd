@@ -1,0 +1,85 @@
+clear all;
+clc;
+% Earth topographic map
+figure(1);
+xwidth = 820;
+ywidth = 420;
+hFig = figure(1);
+ set(gcf,'PaperPositionMode','auto')
+ set(hFig, 'Position', [100 100 xwidth ywidth])
+hold on;
+grid on;
+axis([0 360 -90 90]);
+load('topo.mat','topo','topomap1');
+contour(0:359,-89:90,topo,[0 0],'b')
+axis equal
+box on
+set(gca,'XLim',[0 360],'YLim',[-90 90], ...
+    'XTick',[0 60 120 180 240 300 360], ...
+    'Ytick',[-90 -60 -30 0 30 60 90]);
+image([0 360],[-90 90],topo,'CDataMapping', 'scaled');
+colormap(topomap1);
+ylabel('Latitude [deg]');
+xlabel('Longitude [deg]');
+title('GPS BII-10 ground track');
+global mu;
+R_e = 6378;        % Earth's radius
+mu = 398600;       % Earth’s gravitational parameter [km^3/s^2]
+J2 = 0.0010836;
+we = 360*(1 + 1/365.25)/(3600*24);      % Earth's rotation [deg/s]
+% GPS BII-10 Orbital Parametres
+rp    =  2722.425  + R_e;       % [km] Perigee Radius
+ra    =  2722.425  + R_e;       % [km] Apogee Radius
+theta =  25;                 % [deg] True anomaly
+RAAN  =  229.9128 ;          % [deg] Right ascension of the ascending node
+i     =  110.797 ;           % [deg] Inclination
+omega =  335.2539  ;         % [deg] Argument of perigee
+deg = pi/180;
+a = (ra+rp)/2;               % Semimajor axis
+e = (ra -rp)/(ra+rp) ;       % Eccentricity
+h = (mu*rp*(1 + e))^0.5;     % Angular momentum
+T = 2*pi*a^1.5/mu^0.5;       % Period
+dRAAN = -(1.5*mu^0.5*J2*R_e^2/((1-e^2)*a^3.5))*cosd(i)*180/pi;
+domega = dRAAN*(2.5*sind(i)^2 - 2)/cosd(i);
+% Initial state
+coe=[h,e,RAAN*deg,i*deg,omega*deg,theta*deg];
+[R0, V0] = sv_from_coe(coe);
+[ alfa0 ,delta0 ] = R2RA_Dec( R0 );
+scatter(alfa0,delta0,'*k');
+
+ind = 1;
+eps = 1E-9;
+dt = 20;        % time step [sec]
+ti = 0;
+
+while(ti <= 3*T);
+    E = 2*atan(tand(theta/2)*((1-e)/(1+e))^0.5);
+    M = E  - e*sin(E);
+    t0 = M/(2*pi)*T;
+    t = t0 + dt;
+    M = 2*pi*t/T;
+    E = kepler_E(e,M);
+    theta = 2*atan(tan(E/2)*((1+e)/(1-e))^0.5)*180/pi;
+    RAAN  = RAAN  +  dRAAN*dt ;
+    omega = omega + domega*dt;
+    coe=[ h, e, RAAN, i,omega,theta];
+
+    [R,V] = sv_from_coe(coe);
+    % Considering Earth's rotation
+    fi_earth = we*ti;
+    Rot = [cosd(fi_earth), sind(fi_earth),0;-sind(fi_earth),cosd(fi_earth),0;0,0,1];
+    R = R*Rot;
+    [ alfa(ind) ,delta(ind) ] = R2RA_Dec( R );
+    ti = ti+dt;
+    ind = ind + 1;
+end
+ scatter(alfa(1:100),delta(1:100),'.r');
+% for i=1:sizeof(alpha)
+%     coffee(i-idly)=alpha(i);
+%     tea(i-idly)=delta(i);
+%     if(alpha(i+1)<alpha(i)
+%         idly=
+% end
+% plot(coffee,tea,'-o');
+text(280,-80,'smallsats.org','Color',[1 1 1], 'VerticalAlignment','middle',...
+	'HorizontalAlignment','left','FontSize',14 );
